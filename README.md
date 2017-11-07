@@ -54,9 +54,9 @@
 ### CaptureActivity 识别身份证、银行卡照相机类
 
 #### API
-startAction(Activity context, CardType type, int requestCode)
-startAction(Activity context, CardType type, String url, int requestCode)
-startAction(Activity context, CardType type, @StringRes int titleId, int requestCode)
+startAction(Activity context, CardType type, int requestCode) </br>
+startAction(Activity context, CardType type, String url, int requestCode) </br>
+startAction(Activity context, CardType type, @StringRes int titleId, int requestCode)</br>
 
 * context 调起照相机的activity类
 * type 枚举类，有三个类型
@@ -112,7 +112,27 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
         }
     }
 ```
+#### IdCardInfo
+    ```groovy
+    private String authority; //签发机关，XXX公安局
+    private String validDate; //有效期限，200702.14-2017.02.14
+    private String imageUrl; //截图保存地址
+    private String name; //姓名
+    private String sex; //性别
+    private String nation; //民族
+    private String birth; //出生
+    private String address; //住址
+    private String id; //公民身份号码
+    ```
+#### BankInfo
+    ```groovy
+    private String bankInfo; //银行信息，农业银行
+    private String bankName; //卡名字，金穗通宝卡(银联卡)
+    private String bankType; //卡类型，借记卡
+    private String bankNumber; //卡号，6228475757548
+    ```
 
+### 自定义照相界面
 
 ### TaskQueue 
 

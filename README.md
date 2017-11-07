@@ -1,6 +1,6 @@
 # cardocr 身份证、银行卡识别
 
-这个库的底层是使用腾讯优图云平台识别技术[`http://open.youtu.qq.com/`](http://open.youtu.qq.com/) 
+这个库的底层是使用腾讯优图云平台识别技术，识别速度大概4秒左右 [`http://open.youtu.qq.com/`](http://open.youtu.qq.com/) 
 
 ## 集成
 ### permission与meta-data声明

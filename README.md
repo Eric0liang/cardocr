@@ -36,7 +36,8 @@
 ```
 ### 依赖的jar添加到libs
 [fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)
-['BASE64Decoder.jar'](https://github.com/Eric0liang/cardocr/blob/master/app/libs/sun.misc.BASE64Decoder.jar）
+
+[BASE64Decoder.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/sun.misc.BASE64Decoder.jar)
 
 ## apk下载地址: 
 [下载最新版本](https://github.com/Eric0liang/cardocr/blob/master/app-debug.apk)

@@ -1,9 +1,9 @@
-# carorc 身份证银行卡识别
+# cardocr 身份证、银行卡识别
 
 这个库的底层是使用腾讯优图云平台识别技术[`http://open.youtu.qq.com/`](http://open.youtu.qq.com/) 
 
 ## 集成
-###permission与meta-data声明
+### permission与meta-data声明
 ```groovy
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -22,7 +22,7 @@
             android:value="腾讯优图申请" />
             
 ```
-###Gradle
+### Gradle
 ```groovy
     allprojects {
         jcenter()

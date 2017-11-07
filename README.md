@@ -51,11 +51,67 @@
 
 **使用前请阅读对应模块的文档和示例，如果有不清楚的地方，可以看源码，或者向我提问。**
 
-### Core 
+### CaptureActivity 识别身份证、银行卡照相机类
 
-[`基类和工具类`](docs/core.md) 
+#### API
+startAction(Activity context, CardType type, int requestCode)
+startAction(Activity context, CardType type, String url, int requestCode)
+startAction(Activity context, CardType type, @StringRes int titleId, int requestCode)
 
-MultiIntentService, NextMessage, Charsets, StringUtils, AndroidUtils, IOUtils, LogUtils。包含基础Activity和Service，还有一些工具类，功能包括：文件路径处理，Toast显示，屏幕方向，组件启用禁用，获取App签名信息；常用的文件复制/字符串/数组/列表/数据流读写，常用的字符串合并/分割/比较/转换/判断等操作；网络类型和状态获取，代理设置；Package相关的工具类，App是否安装，是否运行，启用和禁用组件等；Bitmap缩放，旋转，圆角，阴影，裁剪等；加密算法相关的工具方法，支持MD5/SHA1/SHA256/AES/HEX等。
+* context 调起照相机的activity类
+* type 枚举类，有三个类型
+```groovy
+   public enum CardType {
+    //身份证头像面,身份证国徽面,银行卡
+    TYPE_ID_CARD_FRONT, TYPE_ID_CARD_BACK,TYPE_BANK
+   }
+```
+* titleId 自定义照相机顶部的title，比如<string name="txt_id_card_title">请确保身份证头像面边缘在框内</string>
+* url 是否需要保存身份证的截图，传保存的文件夹路径，比如Environment.getExternalStorageDirectory() + "/images"
+* requestCode onActivityResult使用
+
+#### 使用demo MainActivity代码片段
+```groovy
+    @Override
+    public void onClick(View v) {
+        String dirPath = Environment.getExternalStorageDirectory() + "/images";
+        switch (v.getId()) {
+            case R.id.btn_id_card_back:
+                CaptureActivity.startAction(this, CardType.TYPE_ID_CARD_BACK, checkbox.isChecked() ? dirPath : null, 0);
+                //CaptureActivity.startAction(this, CardType.TYPE_ID_CARD_BACK, 0);
+                //CaptureActivity.startAction(this, CardType.TYPE_ID_CARD_BACK, R.string.txt_id_card_title, 0);
+                break;
+            case R.id.btn_id_card_front:
+                CaptureActivity.startAction(this, CardType.TYPE_ID_CARD_FRONT, checkbox.isChecked() ? dirPath : null, 0);
+                //CaptureActivity.startAction(this, CardType.TYPE_ID_CARD_FRONT, 0);
+                //CaptureActivity.startAction(this, CardType.TYPE_ID_CARD_FRONT, R.string.txt_id_card_title, 0);
+                break;
+            case R.id.btn_bank:
+                CaptureActivity.startAction(this, CardType.TYPE_BANK, 1);
+                break;
+        }
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            imgIdCard.setVisibility(View.GONE);
+            if (requestCode == 0) {
+                IdCardInfo info = (IdCardInfo)data.getSerializableExtra(CaptureActivity.BUNDLE_DATA);
+                txtInfo.setText(info.toString());
+                if (!TextUtils.isEmpty(info.getImageUrl())) {
+                    imgIdCard.setVisibility(View.VISIBLE);
+                    imgIdCard.setImageBitmap(BitmapFactory.decodeFile(info.getImageUrl()));
+                }
+
+            } else {
+                BankInfo info = (BankInfo)data.getSerializableExtra(CaptureActivity.BUNDLE_DATA);
+                txtInfo.setText(info.toString());
+            }
+        }
+    }
+```
 
 
 ### TaskQueue 

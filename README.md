@@ -39,8 +39,8 @@
 
 [BASE64Decoder.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/sun.misc.BASE64Decoder.jar)
 
-## apk下载地址: 
-[下载最新版本](https://github.com/Eric0liang/cardocr/blob/master/app-debug.apk)
+## demo apk下载地址: 
+[点击下载](https://github.com/Eric0liang/cardocr/blob/master/app-debug.apk)
 
 ## 效果
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="400px"/>       <img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="400px"/>

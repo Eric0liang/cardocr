@@ -39,10 +39,9 @@
 [下载最新版本](https://github.com/Eric0liang/cardocr/blob/master/app-debug.apk)
 
 ## 效果
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="100px"/>
-![image](https://github.com/Eric0liang/cardocr/blob/master/images/3.png)
-![image](https://github.com/Eric0liang/cardocr/blob/master/images/4.png)
-![image](https://github.com/Eric0liang/cardocr/blob/master/images/1.png)
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="200px"/>       <img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="200px"/>
+
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="200px"/>       <img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="200px"/>
 
 ## 使用指南（2017.11.7更新）
 

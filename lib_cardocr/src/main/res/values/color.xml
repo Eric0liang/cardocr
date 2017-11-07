@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <color name="white">#ffffffff</color><!--白色 -->
+    <color name="grep">#ffe5e5e5</color>
+    <color name="loading_dialog_bg">#4F000000</color>
+</resources>

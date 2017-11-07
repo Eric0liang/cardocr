@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_back_white"
+        android:layout_marginLeft="10dp"
+        android:padding="10dp"
+        android:rotation="270"
+        android:layout_alignParentBottom="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/image_back"
+        android:layout_toLeftOf="@+id/btn_take_picture"
+        android:layout_above="@+id/image_back"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="6dp" />
+
+        <View
+            android:id="@+id/view_border"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/view_border_white_shape4" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/btn_take_picture"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginLeft="32dp"
+        android:background="@drawable/take_picture_circle"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
+        android:layout_centerVertical="true" />
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">lib_cardocr</string>
+    <!--动态权限-->
+    <string name="no_permissions">应用需要必要的运行权限</string>
+    <string name="settings">设置</string>
+    <string name="help">帮助</string>
+    <string name="string_help_text">当前应用缺少必要权限。\n请点击\"设置\"-\"权限\"-打开所需权限。\n最后点击两次后退按钮，即可返回。</string>
+    <string name="quit">退出</string>
+    <string name="txt_card_number">卡号</string>
+    <string name="txt_card_name">卡名字</string>
+    <string name="txt_card_type">卡类型</string>
+    <string name="txt_bank_info">银行信息</string>
+    <string name="card_cert_fail">识别失败，请重新拍照</string>
+    <string name="card_certing">识别中...</string>
+    <string name="txt_id_card_title">请确保身份证头像面边缘在框内</string>
+    <string name="txt_id_card_title2">请确保身份证国徽面边缘在框内</string>
+    <string name="txt_bank_card_title">请确保银行卡边缘在框内</string>
+</resources>

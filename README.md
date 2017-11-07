@@ -35,6 +35,8 @@
     compile 'cn.com.bluemoon:lib_cardocr:1.0.0'
 ```
 
+## apk下载地址: [下载最新版本](http://pan.baidu.com/s/1qXIF55i)
+
 ## 效果
 
 ## 使用指南（2017.11.7更新）

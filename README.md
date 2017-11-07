@@ -14,10 +14,10 @@
     <meta-data
             android:name="ORC_APP_KEY"
             android:value="腾讯优图申请" />
-        <meta-data
+    <meta-data
             android:name="ORC_SECRET_ID"
             android:value="腾讯优图申请" />
-        <meta-data
+    <meta-data
             android:name="ORC_SECRET_KEY"
             android:value="腾讯优图申请" />
             
@@ -34,6 +34,9 @@
 ```groovy
     compile 'cn.com.bluemoon:lib_cardocr:1.0.0'
 ```
+### 依赖的jar添加到libs
+[fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)
+[BASE64Decoder.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/sun.misc.BASE64Decoder.jar）
 
 ## apk下载地址: 
 [下载最新版本](https://github.com/Eric0liang/cardocr/blob/master/app-debug.apk)

@@ -16,16 +16,16 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="ORC_APP_KEY"
-            android:value="10105847" />
+            android:value="腾讯优图申请" />
         <meta-data
             android:name="ORC_SECRET_ID"
-            android:value="AKID059qcOIwDTiw9XeRtLoGiAb1jVfq8BKN" />
+            android:value="腾讯优图申请" />
         <meta-data
             android:name="ORC_SECRET_KEY"
-            android:value="4xgDZllZBezA8uUwCF9sQmyymOo23sUv" />
+            android:value="腾讯优图申请" />
         <meta-data
             android:name="ORC_QQ_NUMBER"
-            android:value="926454247" />
+            android:value="腾讯优图申请" />
 
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">

@@ -35,12 +35,12 @@
     compile 'cn.com.bluemoon:lib_cardocr:1.0.0'
 ```
 ### 依赖的jar添加到libs
-    [fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)
+[fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)
 
-    [BASE64Decoder.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/sun.misc.BASE64Decoder.jar)
+[BASE64Decoder.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/sun.misc.BASE64Decoder.jar)
 
 ## demo apk下载地址: 
-    [点击下载](https://github.com/Eric0liang/cardocr/blob/master/app-debug.apk)
+[点击下载](https://github.com/Eric0liang/cardocr/blob/master/app-debug.apk)
 
 ## 效果
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="400px"/>       <img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="400px"/>

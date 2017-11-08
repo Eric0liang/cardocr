@@ -175,7 +175,7 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 #### 联系方式
 
 * Github: <https://github.com/Eric0liang>
-* Email: [liangjiang@bluemoon.com.cn](mailto:liangjiang@bluemoon.com.cn)
+* Email: [liangjiangli@bluemoon.com.cn](mailto:liangjiang@bluemoon.com.cn)
 
 ------
 

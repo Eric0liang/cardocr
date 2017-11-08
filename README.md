@@ -161,6 +161,8 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 ```
 
 ## 更新记录
+- **1.0.1** 2017.11.8
+	* 修复断网的时候一直在loading
 - **1.0.0** 2017.11.7
 	* first commit
 

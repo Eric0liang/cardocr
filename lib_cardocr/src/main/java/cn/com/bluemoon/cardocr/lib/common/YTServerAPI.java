@@ -57,10 +57,10 @@ public class YTServerAPI {
         try {
             Bundle metaData = context.getPackageManager()
                     .getApplicationInfo(context.getPackageName(),PackageManager.GET_META_DATA).metaData;
-            m_appid = String.valueOf(metaData.getInt("ORC_APP_KEY"));
-            m_secret_id = metaData.getString("ORC_SECRET_ID");
-            m_secret_key = metaData.getString("ORC_SECRET_KEY");
-            m_user_id = String.valueOf(metaData.getInt("ORC_QQ_NUMBER"));
+            m_appid = String.valueOf(metaData.getInt("OCR_APP_KEY"));
+            m_secret_id = metaData.getString("OCR_SECRET_ID");
+            m_secret_key = metaData.getString("OCR_SECRET_KEY");
+            m_user_id = String.valueOf(metaData.getInt("OCR_QQ_NUMBER"));
             m_end_point = API_URL;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();

@@ -12,13 +12,13 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     
     <meta-data
-            android:name="ORC_APP_KEY"
+            android:name="OCR_APP_KEY"
             android:value="腾讯优图申请" />
     <meta-data
-            android:name="ORC_SECRET_ID"
+            android:name="OCR_SECRET_ID"
             android:value="腾讯优图申请" />
     <meta-data
-            android:name="ORC_SECRET_KEY"
+            android:name="OCR_SECRET_KEY"
             android:value="腾讯优图申请" />
             
 ```
@@ -32,7 +32,7 @@
 ```
 
 ```groovy
-    compile 'cn.com.bluemoon:lib_cardocr:1.0.0'
+    compile 'cn.com.bluemoon:lib_cardocr:1.0.1'
 ```
 ### 依赖的jar添加到libs
 [fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)
@@ -161,6 +161,8 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 ```
 
 ## 更新记录
+- **1.0.1** 2017.11.8
+	* 修复断网的时候一直在loading
 - **1.0.0** 2017.11.7
 	* first commit
 
@@ -175,7 +177,7 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 #### 联系方式
 
 * Github: <https://github.com/Eric0liang>
-* Email: [liangjiang@bluemoon.com.cn](mailto:liangjiang@bluemoon.com.cn)
+* Email: [liangjiangli@bluemoon.com.cn](mailto:liangjiang@bluemoon.com.cn)
 
 ------
 

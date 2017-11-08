@@ -32,7 +32,7 @@
 ```
 
 ```groovy
-    compile 'cn.com.bluemoon:lib_cardocr:1.0.1'
+    compile 'cn.com.bluemoon:lib_cardocr:1.0.2'
 ```
 ### 依赖的jar添加到libs
 [fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)
@@ -161,6 +161,8 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 ```
 
 ## 更新记录
+- **1.0.2** 2017.11.8
+	* 添加友好提示
 - **1.0.1** 2017.11.8
 	* 修复断网的时候一直在loading
 	* 重命名meta-data

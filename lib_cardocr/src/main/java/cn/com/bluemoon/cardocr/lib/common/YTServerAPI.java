@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -199,9 +200,13 @@ public class YTServerAPI {
             }
             JSONObject respose = new JSONObject(resposeBuffer.toString());
             return respose;
+        } catch (FileNotFoundException e) {
+            if (mListener != null) {
+                mListener.onFailure(HttpsURLConnection.HTTP_NOT_FOUND); //没配置app_key
+            }
         } catch (Exception e) {
             if (mListener != null) {
-                mListener.onFailure(HttpsURLConnection.HTTP_BAD_GATEWAY);
+                mListener.onFailure(HttpsURLConnection.HTTP_BAD_GATEWAY); //断网
             }
         }
         return null;

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -262,7 +263,11 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
                 if (statusCode == HttpsURLConnection.HTTP_OK) {
                     toast = getString(R.string.card_cert_fail);
                 } else {
-                    toast = getString(R.string.server_error);
+                    if (statusCode == HttpsURLConnection.HTTP_NOT_FOUND) {
+                        toast = getString(R.string.config_error);
+                    } else {
+                        toast = getString(R.string.server_error);
+                    }
                 }
                 Toast.makeText(BaseCaptureActivity.this, toast, Toast.LENGTH_LONG).show();
                 openCamera();
@@ -293,7 +298,7 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
                                 } else {
                                     mServer.idCardOcr(fileData, cartType == CardType.TYPE_ID_CARD_FRONT ? 0 : 1);
                                 }
-                            } catch (Exception e) {
+                            }  catch (Exception e) {
                                 certFail(HttpsURLConnection.HTTP_BAD_REQUEST);
                                 e.printStackTrace();
                             }

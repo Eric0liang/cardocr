@@ -12,6 +12,7 @@
     <string name="txt_bank_info">银行信息</string>
     <string name="card_cert_fail">识别失败，请重新拍照</string>
     <string name="server_error">服务器繁忙，请检查网络</string>
+    <string name="config_error">尚未配置腾讯优图app key</string>
     <string name="card_certing">识别中...</string>
     <string name="txt_id_card_title">请确保身份证头像面边缘在框内</string>
     <string name="txt_id_card_title2">请确保身份证国徽面边缘在框内</string>

@@ -78,8 +78,7 @@ public class YTServerAPI {
     }
 
 
-    public void idCardOcr(String fileData, int cardType)
-            throws IOException, JSONException, KeyManagementException, NoSuchAlgorithmException {
+    public void idCardOcr(String fileData, int cardType) throws JSONException {
         JSONObject data = new JSONObject();
         data.put("image", fileData);
         data.put("app_id", m_appid);
@@ -87,7 +86,7 @@ public class YTServerAPI {
         sendHttpsRequest(data, "idcardocr");
     }
 
-    public void bankCardOcr(String fileData) throws IOException, JSONException, KeyManagementException, NoSuchAlgorithmException {
+    public void bankCardOcr(String fileData) throws  JSONException {
         JSONObject data = new JSONObject();
         data.put("image", fileData);
         data.put("app_id", m_appid);
@@ -134,75 +133,78 @@ public class YTServerAPI {
     }
 
 
-    private JSONObject sendHttpsRequest(JSONObject postData, String mothod)
-            throws NoSuchAlgorithmException, KeyManagementException,
-            IOException, JSONException {
-        SSLContext sc = SSLContext.getInstance("SSL");
-        sc.init(null, new TrustManager[]{new TrustAnyTrustManager()},
-                new java.security.SecureRandom());
+    private JSONObject sendHttpsRequest(JSONObject postData, String mothod) {
+        try {
+            SSLContext sc = SSLContext.getInstance("SSL");
+            sc.init(null, new TrustManager[]{new TrustAnyTrustManager()},
+                    new java.security.SecureRandom());
 
-        StringBuffer mySign = new StringBuffer("");
-        YoutuSign.appSign(m_appid, m_secret_id, m_secret_key,
-                System.currentTimeMillis() / 1000 + EXPIRED_SECONDS,
-                m_user_id, mySign);
+            StringBuffer mySign = new StringBuffer("");
+            YoutuSign.appSign(m_appid, m_secret_id, m_secret_key,
+                    System.currentTimeMillis() / 1000 + EXPIRED_SECONDS,
+                    m_user_id, mySign);
 
-        System.setProperty("sun.net.client.defaultConnectTimeout", "30000");
-        System.setProperty("sun.net.client.defaultReadTimeout", "30000");
+            System.setProperty("sun.net.client.defaultConnectTimeout", "30000");
+            System.setProperty("sun.net.client.defaultReadTimeout", "30000");
 
-        URL url = new URL(m_end_point + mothod);
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setSSLSocketFactory(sc.getSocketFactory());
-        connection.setHostnameVerifier(new TrustAnyHostnameVerifier());
-        // set header
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("accept", "*/*");
-        connection.setRequestProperty("user-agent", "youtu-android-sdk");
-        connection.setRequestProperty("Authorization", mySign.toString());
+            URL url = new URL(m_end_point + mothod);
+            HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+            connection.setSSLSocketFactory(sc.getSocketFactory());
+            connection.setHostnameVerifier(new TrustAnyHostnameVerifier());
+            // set header
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("accept", "*/*");
+            connection.setRequestProperty("user-agent", "youtu-android-sdk");
+            connection.setRequestProperty("Authorization", mySign.toString());
 
-        connection.setDoOutput(true);
-        connection.setDoInput(true);
-        connection.setUseCaches(false);
-        connection.setInstanceFollowRedirects(true);
-        connection.setRequestProperty("Content-Type", "text/json");
-        connection.connect();
+            connection.setDoOutput(true);
+            connection.setDoInput(true);
+            connection.setUseCaches(false);
+            connection.setInstanceFollowRedirects(true);
+            connection.setRequestProperty("Content-Type", "text/json");
+            connection.connect();
 
-        // POST请求
-        DataOutputStream out = new DataOutputStream(connection.getOutputStream());
+            // POST请求
+            DataOutputStream out = new DataOutputStream(connection.getOutputStream());
 
-        postData.put("app_id", m_appid);
-        out.write(postData.toString().getBytes("utf-8"));
-        // 刷新、关闭
-        out.flush();
-        out.close();
+            postData.put("app_id", m_appid);
+            out.write(postData.toString().getBytes("utf-8"));
+            // 刷新、关闭
+            out.flush();
+            out.close();
 
-        final int responseCode = connection.getResponseCode();
-        // 读取响应
-        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        String lines;
-        StringBuffer resposeBuffer = new StringBuffer("");
-        while ((lines = reader.readLine()) != null) {
-            lines = new String(lines.getBytes(), "utf-8");
-            resposeBuffer.append(lines);
-        }
-        // System.out.println(resposeBuffer+"\n");
-        reader.close();
-        // 断开连接
-        connection.disconnect();
-
-        if (responseCode == HttpsURLConnection.HTTP_OK) {
-            if (mListener != null) {
-                mListener.onSuccess(responseCode, resposeBuffer.toString());
+            final int responseCode = connection.getResponseCode();
+            // 读取响应
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String lines;
+            StringBuffer resposeBuffer = new StringBuffer("");
+            while ((lines = reader.readLine()) != null) {
+                lines = new String(lines.getBytes(), "utf-8");
+                resposeBuffer.append(lines);
             }
+            // System.out.println(resposeBuffer+"\n");
+            reader.close();
+            // 断开连接
+            connection.disconnect();
 
-        } else {
+            if (responseCode == HttpsURLConnection.HTTP_OK) {
+                if (mListener != null) {
+                    mListener.onSuccess(responseCode, resposeBuffer.toString());
+                }
+
+            } else {
+                if (mListener != null) {
+                    mListener.onFailure(responseCode);
+                }
+            }
+            JSONObject respose = new JSONObject(resposeBuffer.toString());
+            return respose;
+        } catch (Exception e) {
             if (mListener != null) {
-                mListener.onFailure(responseCode);
+                mListener.onFailure(HttpsURLConnection.HTTP_BAD_GATEWAY);
             }
         }
-
-        JSONObject respose = new JSONObject(resposeBuffer.toString());
-
-        return respose;
+        return null;
     }
 
 

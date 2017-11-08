@@ -31,7 +31,7 @@ uploadArchives {
 
             pom.groupId = 'cn.com.bluemoon'
             pom.artifactId = 'lib_cardocr'
-            pom.version = '1.0.0'
+            pom.version = '1.0.1'
 
             pom.project {
                 licenses {

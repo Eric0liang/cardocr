@@ -22,6 +22,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.net.ssl.HttpsURLConnection;
+
 import Decoder.BASE64Encoder;
 import cn.com.bluemoon.cardocr.lib.R;
 import cn.com.bluemoon.cardocr.lib.bean.BankCardBean;
@@ -130,7 +132,7 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
         mHandler = new Handler();
         mServer.setRequestListener(new YTServerAPI.OnRequestListener() {
             @Override
-            public void onSuccess(int statusCode, final String responseBody) {
+            public void onSuccess(final int statusCode, final String responseBody) {
                 mLoadingDialog.dismiss();
                 mHandler.post(new Runnable() {
                     @Override
@@ -149,10 +151,10 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
                                 setResult(RESULT_OK, intent);
                                 finish();
                             } else {
-                                certFail();
+                                certFail(statusCode);
                             }
                         } catch (Exception e) {
-                            certFail();
+                            certFail(statusCode);
                         }
 
                     }
@@ -162,7 +164,7 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
             @Override
             public void onFailure(int statusCode) {
                 mLoadingDialog.dismiss();
-                certFail();
+                certFail(statusCode);
             }
         });
     }
@@ -252,9 +254,21 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
         return isSuccessful;
     }
 
-    private void certFail() {
-        Toast.makeText(BaseCaptureActivity.this, R.string.card_cert_fail, Toast.LENGTH_LONG).show();
-        openCamera();
+    private void certFail(final int statusCode) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                String toast;
+                if (statusCode == HttpsURLConnection.HTTP_OK) {
+                    toast = getString(R.string.card_cert_fail);
+                } else {
+                    toast = getString(R.string.server_error);
+                }
+                Toast.makeText(BaseCaptureActivity.this, toast, Toast.LENGTH_LONG).show();
+                openCamera();
+            }
+        });
+
     }
 
 
@@ -280,7 +294,7 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
                                     mServer.idCardOcr(fileData, cartType == CardType.TYPE_ID_CARD_FRONT ? 0 : 1);
                                 }
                             } catch (Exception e) {
-                                certFail();
+                                certFail(HttpsURLConnection.HTTP_BAD_REQUEST);
                                 e.printStackTrace();
                             }
 

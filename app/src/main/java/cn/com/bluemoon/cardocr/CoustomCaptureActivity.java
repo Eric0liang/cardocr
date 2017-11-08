@@ -44,9 +44,9 @@ public class CoustomCaptureActivity extends BaseCaptureActivity {
             public void onClick(View v) {
                 int id = v.getId();
                 if (id == R.id.btn_back) {
-                    finish();
+                    finish(); //关闭
                 } else if (id == R.id.btn_take) {
-                    identification();
+                    identification(); //拍照
                 }
             }
         };

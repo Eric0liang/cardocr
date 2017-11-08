@@ -12,13 +12,13 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     
     <meta-data
-            android:name="ORC_APP_KEY"
+            android:name="OCR_APP_KEY"
             android:value="腾讯优图申请" />
     <meta-data
-            android:name="ORC_SECRET_ID"
+            android:name="OCR_SECRET_ID"
             android:value="腾讯优图申请" />
     <meta-data
-            android:name="ORC_SECRET_KEY"
+            android:name="OCR_SECRET_KEY"
             android:value="腾讯优图申请" />
             
 ```

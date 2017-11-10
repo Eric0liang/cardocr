@@ -114,14 +114,14 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 #### IdCardInfo
 
     private String authority; //签发机关，XXX公安局
-    private String validDate; //有效期限，200702.14-2017.02.14
-    private String imageUrl; //截图保存地址
-    private String name; //姓名
-    private String sex; //性别
-    private String nation; //民族
-    private String birth; //出生
-    private String address; //住址
-    private String id; //公民身份号码
+    private String validDate; //有效期限，2007.02.14-2017.02.14
+    private String imageUrl; //截图保存地址，预留
+    private String name; //姓名，艾米
+    private String sex; //性别，女
+    private String nation; //民族，汉
+    private String birth; //出生，1990/12/22
+    private String address; //住址，浙江省海盐县武原街工人路
+    private String id; //公民身份号码，610333199012223323
 
 #### BankInfo
 
@@ -160,11 +160,6 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 ```
 
 ## 更新记录
-- **1.0.2** 2017.11.8
-	* 添加友好提示
-- **1.0.1** 2017.11.8
-	* 修复断网的时候一直在loading
-	* 重命名meta-data
 - **1.0.0** 2017.11.7
 	* first commit
 

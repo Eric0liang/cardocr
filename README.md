@@ -126,10 +126,10 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 
 #### BankInfo
 
-    private String bankInfo; //银行信息，农业银行
-    private String bankName; //卡名字，金穗通宝卡(银联卡)
-    private String bankType; //卡类型，借记卡
-    private String bankNumber; //卡号，6228475757548
+    private String bankName; //银行信息，农业银行
+    private String cardName; //卡名字，金穗通宝卡(银联卡)
+    private String cardType; //卡类型，借记卡
+    private String cardNumber; //卡号，6228475757548
 
 ### 自定义照相机界面
 

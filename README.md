@@ -1,6 +1,6 @@
 # cardocr 身份证、银行卡识别
 
-这个库的底层是使用腾讯优图云平台识别技术，识别速度大概4秒左右 [`http://open.youtu.qq.com/`](http://open.youtu.qq.com/) 
+这个库的底层是使用腾讯优图云平台识别技术，识别速度大概5秒左右 [`http://open.youtu.qq.com/`](http://open.youtu.qq.com/) 
 
 ## 集成
 ### permission与meta-data声明
@@ -26,13 +26,12 @@
 ```groovy
     allprojects {
         jcenter()
-        maven { url "https://raw.githubusercontent.com/Eric0liang/lib_cardocr/master" }
     }
     
 ```
 
 ```groovy
-    compile 'cn.com.bluemoon:lib_cardocr:1.0.2'
+    compile 'com.github.eric0liang:lib_cardocr:1.0.0'
 ```
 ### 依赖的jar添加到libs
 [fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)
@@ -115,21 +114,21 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 #### IdCardInfo
 
     private String authority; //签发机关，XXX公安局
-    private String validDate; //有效期限，200702.14-2017.02.14
-    private String imageUrl; //截图保存地址
-    private String name; //姓名
-    private String sex; //性别
-    private String nation; //民族
-    private String birth; //出生
-    private String address; //住址
-    private String id; //公民身份号码
+    private String validDate; //有效期限，2007.02.14-2017.02.14
+    private String imageUrl; //截图保存地址，预留
+    private String name; //姓名，艾米
+    private String sex; //性别，女
+    private String nation; //民族，汉
+    private String birth; //出生，1990/12/22
+    private String address; //住址，浙江省海盐县武原街工人路
+    private String id; //公民身份号码，610333199012223323
 
 #### BankInfo
 
-    private String bankInfo; //银行信息，农业银行
-    private String bankName; //卡名字，金穗通宝卡(银联卡)
-    private String bankType; //卡类型，借记卡
-    private String bankNumber; //卡号，6228475757548
+    private String bankName; //银行信息，农业银行
+    private String cardName; //卡名字，金穗通宝卡(银联卡)
+    private String cardType; //卡类型，借记卡
+    private String cardNumber; //卡号，6228475757548
 
 ### 自定义照相机界面
 
@@ -161,11 +160,6 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 ```
 
 ## 更新记录
-- **1.0.2** 2017.11.8
-	* 添加友好提示
-- **1.0.1** 2017.11.8
-	* 修复断网的时候一直在loading
-	* 重命名meta-data
 - **1.0.0** 2017.11.7
 	* first commit
 

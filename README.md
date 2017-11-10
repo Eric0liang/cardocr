@@ -26,13 +26,12 @@
 ```groovy
     allprojects {
         jcenter()
-        maven { url "https://raw.githubusercontent.com/Eric0liang/lib_cardocr/master" }
     }
     
 ```
 
 ```groovy
-    compile 'cn.com.bluemoon:lib_cardocr:1.0.2'
+    compile 'com.github.eric0liang:lib_cardocr:1.0.0'
 ```
 ### 依赖的jar添加到libs
 [fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)

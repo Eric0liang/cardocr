@@ -234,19 +234,19 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
             if (items != null && items.size() > 0) {
                 for (ItemsBean item : items) {
                     if (getString(R.string.txt_card_number).equals(item.item)) {
-                        info.setBankNumber(item.itemstring);
+                        info.setCardNumber(item.itemstring);
                         isSuccessful = true;
                     } else if (getString(R.string.txt_bank_info).equals(item.item)) {
                         String bankName = item.itemstring;
                         if (bankName.contains("(")) {
                             bankName = bankName.split("\\(")[0];
                         }
-                        info.setBankInfo(bankName);
+                        info.setBankName(bankName);
                         isSuccessful = true;
                     } else if (getString(R.string.txt_card_name).equals(item.item)) {
-                        info.setBankName(item.itemstring);
+                        info.setCardName(item.itemstring);
                     } else if (getString(R.string.txt_card_type).equals(item.item)) {
-                        info.setBankType(item.itemstring);
+                        info.setCardType(item.itemstring);
                     }
                 }
             }

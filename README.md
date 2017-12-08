@@ -60,7 +60,7 @@ startAction(Activity context, CardType type, int requestCode) </br>
 startAction(Activity context, CardType type, @StringRes int titleId, int requestCode)</br>
 
 * context 调起照相机的activity类
-* type 枚举类，有三个类型
+* type 枚举类，有五个类型
 ```groovy
    public enum CardType {
     //身份证头像面,身份证国徽面,银行卡,行驶证,驾驶证

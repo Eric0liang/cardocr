@@ -1,6 +1,6 @@
 # cardocr 身份证、银行卡、行驶证、驾驶证识别
 
-这个库的底层是使用[腾讯优图云平台](http://open.youtu.qq.com/)识别技术，识别速度大概5秒左右。
+这个库的底层是使用[腾讯优图云平台](http://open.youtu.qq.com/)识别技术，所以引用包非常小，识别速度大概5秒左右。
 
 ## 集成
 ### permission与meta-data声明
@@ -59,9 +59,9 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 * type 枚举类，有三个类型
 ```groovy
    public enum CardType {
-    //身份证头像面,身份证国徽面,银行卡
-    TYPE_ID_CARD_FRONT, TYPE_ID_CARD_BACK,TYPE_BANK
-   }
+    //身份证头像面,身份证国徽面,银行卡,行驶证,驾驶证
+    TYPE_ID_CARD_FRONT, TYPE_ID_CARD_BACK,TYPE_BANK,TYPE_DRIVING_LICENSE_XINGSHI,TYPE_DRIVING_LICENSE_JIASHI
+}
 ```
 * titleId 自定义照相机顶部的title，比如<string name="txt_id_card_title">请确保身份证头像面边缘在框内</string>
 * url 是否需要保存身份证的截图，传保存的文件夹路径，比如Environment.getExternalStorageDirectory() + "/images"

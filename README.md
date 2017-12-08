@@ -43,7 +43,7 @@
 
 ## 效果
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/6.png" width="400px"/>
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="400px"/>       <img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="400px"/>
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="400px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="400px"/>
 
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="400px"/>       <img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="400px"/>
 
@@ -162,7 +162,7 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 
 ## 更新记录
 - **1.0.1** 2017.12.8
-	* 修复连续拍照触发的bug
+	* 修复连续拍照触发的奔溃
         * 增加行驶证、驾驶证识别
 - **1.0.0** 2017.11.7
 	* first commit

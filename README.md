@@ -158,7 +158,7 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 ```
 
 ## 更新记录
-- **1.0.2** 2017.11.7
+- **1.0.2** 2017.12.8
     * 优化代码
 - **1.0.1** 2017.12.8
     * 修复连续拍照触发的奔溃

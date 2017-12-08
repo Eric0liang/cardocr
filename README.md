@@ -31,7 +31,7 @@
 ```
 
 ```groovy
-    compile 'com.github.eric0liang:lib_cardocr:1.0.2'
+    compile 'com.github.eric0liang:lib_cardocr:1.0.3'
 ```
 ### 依赖的jar添加到libs
 [fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)
@@ -53,6 +53,10 @@
 #### API
 startAction(Activity context, CardType type, int requestCode) </br>
 startAction(Activity context, CardType type, String url, int requestCode) </br>
+startAction(Activity context, CardType type, @StringRes int titleId, int requestCode)</br>
+
+### DrivingLicenseActivity 识别行驶证、驾驶证照相机类
+startAction(Activity context, CardType type, int requestCode) </br>
 startAction(Activity context, CardType type, @StringRes int titleId, int requestCode)</br>
 
 * context 调起照相机的activity类
@@ -158,7 +162,7 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 ```
 
 ## 更新记录
-- **1.0.2** 2017.12.8
+- **1.0.3, 1.0.2** 2017.12.8
     * 优化代码
 - **1.0.1** 2017.12.8
     * 修复连续拍照触发的奔溃

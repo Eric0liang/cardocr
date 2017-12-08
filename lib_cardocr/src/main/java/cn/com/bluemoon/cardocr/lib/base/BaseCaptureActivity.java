@@ -355,36 +355,40 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
      */
     private boolean isControl = false;
     protected final void identification() {
-        if (mCamera != null && !isControl) {
-            isControl = true;
-            mCamera.takePicture(null, null, new Camera.PictureCallback() {
-                @Override
-                public void onPictureTaken(final byte[] bytes, Camera camera) {
-                    isControl = false;
-                    mLoadingDialog.setText(getString(R.string.card_certing));
-                    mLoadingDialog.show();
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                BASE64Encoder encoder = new BASE64Encoder();
-                                String fileData = encoder.encode(bytes);
-                                if (cartType == CardType.TYPE_BANK) {
-                                    mServer.bankCardOcr(fileData);
-                                } else if(cartType == CardType.TYPE_ID_CARD_FRONT||cartType == CardType.TYPE_ID_CARD_BACK){
-                                    mServer.idCardOcr(fileData, cartType == CardType.TYPE_ID_CARD_FRONT ? 0 : 1);
-                                } else if(cartType == CardType.TYPE_DRIVING_LICENSE_XINGSHI||cartType == CardType.TYPE_DRIVING_LICENSE_JIASHI){
-                                    mServer.drivingLicenseOcr(fileData, cartType == CardType.TYPE_DRIVING_LICENSE_XINGSHI ? 0 : 1);
+        try {
+            if (mCamera != null && !isControl) {
+                isControl = true;
+                mCamera.takePicture(null, null, new Camera.PictureCallback() {
+                    @Override
+                    public void onPictureTaken(final byte[] bytes, Camera camera) {
+                        isControl = false;
+                        mLoadingDialog.setText(getString(R.string.card_certing));
+                        mLoadingDialog.show();
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    BASE64Encoder encoder = new BASE64Encoder();
+                                    String fileData = encoder.encode(bytes);
+                                    if (cartType == CardType.TYPE_BANK) {
+                                        mServer.bankCardOcr(fileData);
+                                    } else if(cartType == CardType.TYPE_ID_CARD_FRONT||cartType == CardType.TYPE_ID_CARD_BACK){
+                                        mServer.idCardOcr(fileData, cartType == CardType.TYPE_ID_CARD_FRONT ? 0 : 1);
+                                    } else if(cartType == CardType.TYPE_DRIVING_LICENSE_XINGSHI||cartType == CardType.TYPE_DRIVING_LICENSE_JIASHI){
+                                        mServer.drivingLicenseOcr(fileData, cartType == CardType.TYPE_DRIVING_LICENSE_XINGSHI ? 0 : 1);
+                                    }
+                                }  catch (Exception e) {
+                                    certFail(HttpsURLConnection.HTTP_BAD_REQUEST);
+                                    e.printStackTrace();
                                 }
-                            }  catch (Exception e) {
-                                certFail(HttpsURLConnection.HTTP_BAD_REQUEST);
-                                e.printStackTrace();
-                            }
 
-                        }
-                    }).start();
-                }
-            });
+                            }
+                        }).start();
+                    }
+                });
+            }
+        } catch (Exception e) {
+            isControl = false;
         }
     }
 

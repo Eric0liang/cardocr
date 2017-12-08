@@ -42,8 +42,7 @@
 [点击下载](https://github.com/Eric0liang/cardocr/blob/master/app-debug.apk)
 
 ## 效果
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/6.png" width="300px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="300px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="300px"/>
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="300px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="300px"/>
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/6.png" width="400px"/>    <img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="400px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="400px"/>    <img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="400px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="400px"/>
 
 ## 使用指南（2017.12.8更新）
 

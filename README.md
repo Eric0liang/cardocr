@@ -1,4 +1,4 @@
-# cardocr 身份证、银行卡识别
+# cardocr 身份证、银行卡、行驶证、驾驶证识别
 
 这个库的底层是使用腾讯优图云平台识别技术，识别速度大概5秒左右 [`http://open.youtu.qq.com/`](http://open.youtu.qq.com/) 
 
@@ -31,7 +31,7 @@
 ```
 
 ```groovy
-    compile 'com.github.eric0liang:lib_cardocr:1.0.0'
+    compile 'com.github.eric0liang:lib_cardocr:1.0.1'
 ```
 ### 依赖的jar添加到libs
 [fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)
@@ -42,11 +42,12 @@
 [点击下载](https://github.com/Eric0liang/cardocr/blob/master/app-debug.apk)
 
 ## 效果
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/6.png" width="400px"/>
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="400px"/>       <img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="400px"/>
 
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="400px"/>       <img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="400px"/>
 
-## 使用指南（2017.11.7更新）
+## 使用指南（2017.12.8更新）
 
 **使用前请阅读对应模块的文档和示例，如果有不清楚的地方，可以看源码，或者向我提问。**
 
@@ -160,6 +161,9 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 ```
 
 ## 更新记录
+- **1.0.1** 2017.12.8
+	* 修复连续拍照触发的bug
+        * 增加行驶证、驾驶证识别
 - **1.0.0** 2017.11.7
 	* first commit
 

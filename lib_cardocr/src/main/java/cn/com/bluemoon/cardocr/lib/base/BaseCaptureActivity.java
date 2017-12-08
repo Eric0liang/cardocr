@@ -30,6 +30,8 @@ import cn.com.bluemoon.cardocr.lib.R;
 import cn.com.bluemoon.cardocr.lib.bean.BankCardBean;
 import cn.com.bluemoon.cardocr.lib.bean.BankCardBean.ItemsBean;
 import cn.com.bluemoon.cardocr.lib.bean.BankInfo;
+import cn.com.bluemoon.cardocr.lib.bean.DrivingLicenseBean;
+import cn.com.bluemoon.cardocr.lib.bean.DrivingLicenseInfo;
 import cn.com.bluemoon.cardocr.lib.bean.IDCardBackBean;
 import cn.com.bluemoon.cardocr.lib.bean.IDCardFrontBean;
 import cn.com.bluemoon.cardocr.lib.bean.IdCardInfo;
@@ -144,8 +146,10 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
                             Bundle bundle = new Bundle();
                             if (cartType == CardType.TYPE_BANK) {
                                 isSuccessful = handleBankCardData(isSuccessful, bundle, responseBody);
-                            } else {
+                            } else if(cartType == CardType.TYPE_ID_CARD_FRONT||cartType == CardType.TYPE_ID_CARD_BACK){
                                 isSuccessful = handleIdCardData(isSuccessful, bundle, responseBody);
+                            } else{
+                                isSuccessful = handleDrivingLicenseData(isSuccessful, bundle, responseBody);
                             }
                             if (isSuccessful) {
                                 intent.putExtras(bundle);
@@ -255,6 +259,75 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
         return isSuccessful;
     }
 
+    /**
+     * 处理行驶证、驾驶证数据
+     * @param isSuccessful
+     * @param bundle
+     * @param responseBody
+     * @return
+     */
+    protected boolean handleDrivingLicenseData(boolean isSuccessful, Bundle bundle, String responseBody) {
+        //行驶证、驾驶证
+        DrivingLicenseBean drivinglicenseBean = JSON.parseObject(responseBody, DrivingLicenseBean.class);
+        DrivingLicenseInfo info = new DrivingLicenseInfo();
+        if (drivinglicenseBean.errorcode == 0) {
+            List<DrivingLicenseBean.Item> items = drivinglicenseBean.items;
+            if (items != null && items.size() > 0) {
+                for (DrivingLicenseBean.Item item : items) {
+                    if (getString(R.string.txt_license_number).equals(item.item)) {
+                        info.setLicenseNumber(item.itemstring);
+                        isSuccessful = true;
+                    }else if (getString(R.string.txt_certificate_number).equals(item.item)) {
+                        info.setCertificateNumber(item.itemstring);
+                        isSuccessful = true;
+                    }
+                    if (!TextUtils.isEmpty(info.getLicenseNumber())) {
+                        if (getString(R.string.txt_vehicle_type).equals(item.item)) {
+                            info.setVehicleType(item.itemstring);
+                        } else if (getString(R.string.txt_master).equals(item.item)) {
+                            info.setMaster(item.itemstring);
+                        } else if (getString(R.string.txt_address).equals(item.item)) {
+                            info.setAddress(item.itemstring);
+                        }else if (getString(R.string.txt_function).equals(item.item)) {
+                            info.setFunction(item.itemstring);
+                        }else if (getString(R.string.txt_brand_model).equals(item.item)) {
+                            info.setBrandModel(item.itemstring);
+                        }else if (getString(R.string.txt_identify_code).equals(item.item)) {
+                            info.setIdentifyCode(item.itemstring);
+                        }else if (getString(R.string.txt_engine_number).equals(item.item)) {
+                            info.setEngineNumber(item.itemstring);
+                        }else if (getString(R.string.txt_registration_date).equals(item.item)) {
+                            info.setRegistrationDate(item.itemstring);
+                        }else if (getString(R.string.txt_opening_date).equals(item.item)) {
+                            info.setOpeningDate(item.itemstring);
+                        }
+                    } else if (!TextUtils.isEmpty(info.getCertificateNumber())) {
+                        if (getString(R.string.txt_name).equals(item.item)) {
+                            info.setName(item.itemstring);
+                        } else if (getString(R.string.txt_gender).equals(item.item)) {
+                            info.setGender(item.itemstring);
+                        }else if (getString(R.string.txt_nationality).equals(item.item)) {
+                            info.setNationality(item.itemstring);
+                        }else if (getString(R.string.txt_address).equals(item.item)) {
+                            info.setAddress(item.itemstring);
+                        }else if (getString(R.string.txt_date_birth).equals(item.item)) {
+                            info.setDateBirth(item.itemstring);
+                        }else if (getString(R.string.txt_ling_opening_date).equals(item.item)) {
+                            info.setOpeningDate(item.itemstring);
+                        }else if (getString(R.string.txt_quasi_driving_type).equals(item.item)) {
+                            info.setQuasiDrivingType(item.itemstring);
+                        }else if (getString(R.string.txt_effective_date).equals(item.item)) {
+                            info.setEffectiveDate(item.itemstring);
+                        }else if (getString(R.string.txt_start_date).equals(item.item)) {
+                            info.setStartDate(item.itemstring);
+                        }
+                    }
+                }
+            }
+            bundle.putSerializable(BUNDLE_DATA, info);
+        }
+        return isSuccessful;
+    }
     private void certFail(final int statusCode) {
         runOnUiThread(new Runnable() {
             @Override
@@ -280,11 +353,14 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
     /**
      * 拍照上传识别
      */
+    private boolean isControl = false;
     protected final void identification() {
-        if (mCamera != null) {
+        if (mCamera != null && !isControl) {
+            isControl = true;
             mCamera.takePicture(null, null, new Camera.PictureCallback() {
                 @Override
                 public void onPictureTaken(final byte[] bytes, Camera camera) {
+                    isControl = false;
                     mLoadingDialog.setText(getString(R.string.card_certing));
                     mLoadingDialog.show();
                     new Thread(new Runnable() {
@@ -295,8 +371,10 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
                                 String fileData = encoder.encode(bytes);
                                 if (cartType == CardType.TYPE_BANK) {
                                     mServer.bankCardOcr(fileData);
-                                } else {
+                                } else if(cartType == CardType.TYPE_ID_CARD_FRONT||cartType == CardType.TYPE_ID_CARD_BACK){
                                     mServer.idCardOcr(fileData, cartType == CardType.TYPE_ID_CARD_FRONT ? 0 : 1);
+                                } else if(cartType == CardType.TYPE_DRIVING_LICENSE_XINGSHI||cartType == CardType.TYPE_DRIVING_LICENSE_JIASHI){
+                                    mServer.drivingLicenseOcr(fileData, cartType == CardType.TYPE_DRIVING_LICENSE_XINGSHI ? 0 : 1);
                                 }
                             }  catch (Exception e) {
                                 certFail(HttpsURLConnection.HTTP_BAD_REQUEST);

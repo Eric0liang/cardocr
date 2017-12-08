@@ -94,6 +94,14 @@ public class YTServerAPI {
         sendHttpsRequest(data, "creditcardocr");
     }
 
+    public void drivingLicenseOcr(String fileData,int type) throws  JSONException {
+        JSONObject data = new JSONObject();
+        data.put("image", fileData);
+        data.put("app_id", m_appid);
+        data.put("type", type);//识别类型，0表示行驶证识别，1表示驾驶证识别
+        sendHttpsRequest(data, "driverlicenseocr");
+    }
+
     /**
      * 保存bitmap到内存卡
      *

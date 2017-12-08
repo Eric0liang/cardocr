@@ -23,9 +23,6 @@
         <meta-data
             android:name="OCR_SECRET_KEY"
             android:value="腾讯优图申请" />
-        <meta-data
-            android:name="OCR_QQ_NUMBER"
-            android:value="腾讯优图申请" />
 
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">

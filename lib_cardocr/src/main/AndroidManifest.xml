@@ -6,6 +6,10 @@
             android:name=".CaptureActivity"
             android:theme="@style/AppTheme.Fullscreen"
             android:screenOrientation="landscape"/>
+        <activity
+            android:name=".DrivingLicenseActivity"
+            android:theme="@style/AppTheme.Fullscreen"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

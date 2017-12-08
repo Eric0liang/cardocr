@@ -8,46 +8,79 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginTop="10dp">
+
         <Button
             android:id="@+id/btn_id_card_front"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="身份证头像面"/>
+            android:text="身份证头像面"
+            android:textSize="14sp"/>
+
         <Button
             android:id="@+id/btn_id_card_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="身份证国徽面"/>
+            android:text="身份证国徽面"
+            android:textSize="14sp"/>
+
         <CheckBox
             android:id="@+id/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="显示截图"/>
+            android:text="显示截图"
+            android:textSize="14sp"/>
 
     </LinearLayout>
-    <Button
-        android:id="@+id/btn_bank"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:padding="10dp"
-        android:text="银行卡识别"/>
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp">
+
+        <Button
+            android:id="@+id/btn_bank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="银行卡识别"
+            android:textSize="14sp"/>
+
+        <Button
+            android:id="@+id/btn_xingshi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="行驶证识别"
+            android:textSize="14sp"/>
+
+
+        <Button
+            android:id="@+id/btn_jiashi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="驾驶证识别"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/txt_info"
-        android:gravity="center"
-        android:padding="10dp"
-        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:padding="10dp"/>
+
     <ImageView
         android:id="@+id/img_front_id"
         android:layout_width="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="84dp"
         android:layout_gravity="center"
-        android:layout_height="84dp" />
+        android:layout_marginTop="10dp"/>
 </LinearLayout>

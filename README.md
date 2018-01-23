@@ -44,7 +44,7 @@
 ## 效果
 ### 1.身份证识别
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/7.jpg"/></br>
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/5.png" width="280px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="280px"/></br>
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/5.png" width="280px"/>  <img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="280px"/></br>
 ### 2.银行卡识别
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/9.jpg"/></br>
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="300px"/></br>
@@ -54,7 +54,7 @@
 ### 4.驾驶证识别
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/10.jpg"/></br>
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="300px"/>v
-## 使用指南（2017.12.8更新）
+## 使用指南（2018.1.23更新）
 
 **使用前请阅读对应模块的文档和示例，如果有不清楚的地方，可以看源码，或者向我提问。**
 
@@ -96,6 +96,12 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
             case R.id.btn_bank:
                 CaptureActivity.startAction(this, CardType.TYPE_BANK, 1);
                 break;
+            case R.id.btn_xingshi:
+                CaptureActivity.startAction(this,CardType.TYPE_DRIVING_LICENSE_XINGSHI,2);
+                break;
+            case R.id.btn_jiashi:
+                CaptureActivity.startAction(this,CardType.TYPE_DRIVING_LICENSE_JIASHI,2);
+                break;
         }
     }
     
@@ -112,8 +118,11 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
                     imgIdCard.setImageBitmap(BitmapFactory.decodeFile(info.getImageUrl()));
                 }
 
-            } else {
+            } else if (requestCode == 1){
                 BankInfo info = (BankInfo)data.getSerializableExtra(CaptureActivity.BUNDLE_DATA);
+                txtInfo.setText(info.toString());
+            } else {
+                DrivingLicenseInfo info = (DrivingLicenseInfo)data.getSerializableExtra(CaptureActivity.BUNDLE_DATA);
                 txtInfo.setText(info.toString());
             }
         }
@@ -137,11 +146,32 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
     private String cardName; //卡名字，金穗通宝卡(银联卡)
     private String cardType; //卡类型，借记卡
     private String cardNumber; //卡号，6228475757548
+    
+#### DrivingLicenseInfo
+    private String licenseNumber;//车牌号码
+    private String vehicleType;//车辆类型
+    private String master;//所有人
+    private String address;//住址
+    private String function;//使用性质
+    private String brandModel;//品牌型号
+    private String identifyCode;//识别代码
+    private String engineNumber;//发动机号
+    private String registrationDate;//注册日期
+    private String openingDate;//发证日期
 
-### 自定义照相机界面
+    private String certificateNumber;//证号
+    private String name;//姓名
+    private String gender;//性别
+    private String nationality;//国籍
+    private String dateBirth;//出生日期
+    private String quasiDrivingType;//准驾车型
+    private String effectiveDate;//有效日期
+    private String startDate;//起始日期
+
+### 识别照相机界面，默认样式如下，也可自定义（参考CoustomCaptureActivity类）
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/6.png" width="400px"/>
 
-可以参考CoustomCaptureActivity类，继承BaseCaptureActivity，并重写getLayoutId，initCustomView两个方法即可。
+如果想自定义识别照相机界面，继承BaseCaptureActivity，并重写getLayoutId，initCustomView两个方法即可。
 ```groovy
     @Override
     public int getLayoutId() {

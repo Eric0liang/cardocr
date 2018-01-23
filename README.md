@@ -1,6 +1,6 @@
 # cardocr 身份证、银行卡、行驶证、驾驶证识别
 
-这个库的底层是使用腾讯优图云平台识别技术，识别速度大概5秒左右 [`http://open.youtu.qq.com/`](http://open.youtu.qq.com/) 
+这个库的底层是使用[腾讯优图云平台](http://open.youtu.qq.com/)识别技术，所以引用包非常小，识别速度大概5秒左右。
 
 ## 集成
 ### permission与meta-data声明
@@ -31,7 +31,7 @@
 ```
 
 ```groovy
-    compile 'com.github.eric0liang:lib_cardocr:1.0.1'
+    compile 'com.github.eric0liang:lib_cardocr:1.0.3'
 ```
 ### 依赖的jar添加到libs
 [fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)
@@ -42,10 +42,7 @@
 [点击下载](https://github.com/Eric0liang/cardocr/blob/master/app-debug.apk)
 
 ## 效果
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/6.png" width="400px"/>
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="400px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="400px"/>
-
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="400px"/>       <img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="400px"/>
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/6.png" width="400px"/>    <img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="400px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="400px"/>    <img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="400px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="400px"/>
 
 ## 使用指南（2017.12.8更新）
 
@@ -58,13 +55,17 @@ startAction(Activity context, CardType type, int requestCode) </br>
 startAction(Activity context, CardType type, String url, int requestCode) </br>
 startAction(Activity context, CardType type, @StringRes int titleId, int requestCode)</br>
 
+### DrivingLicenseActivity 识别行驶证、驾驶证照相机类
+startAction(Activity context, CardType type, int requestCode) </br>
+startAction(Activity context, CardType type, @StringRes int titleId, int requestCode)</br>
+
 * context 调起照相机的activity类
-* type 枚举类，有三个类型
+* type 枚举类，有五个类型
 ```groovy
    public enum CardType {
-    //身份证头像面,身份证国徽面,银行卡
-    TYPE_ID_CARD_FRONT, TYPE_ID_CARD_BACK,TYPE_BANK
-   }
+    //身份证头像面,身份证国徽面,银行卡,行驶证,驾驶证
+    TYPE_ID_CARD_FRONT, TYPE_ID_CARD_BACK,TYPE_BANK,TYPE_DRIVING_LICENSE_XINGSHI,TYPE_DRIVING_LICENSE_JIASHI
+}
 ```
 * titleId 自定义照相机顶部的title，比如<string name="txt_id_card_title">请确保身份证头像面边缘在框内</string>
 * url 是否需要保存身份证的截图，传保存的文件夹路径，比如Environment.getExternalStorageDirectory() + "/images"
@@ -161,11 +162,13 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 ```
 
 ## 更新记录
+- **1.0.3, 1.0.2** 2017.12.8
+    * 优化代码
 - **1.0.1** 2017.12.8
-	* 修复连续拍照触发的奔溃
-        * 增加行驶证、驾驶证识别
+    * 修复连续拍照触发的奔溃
+    * 增加行驶证、驾驶证识别
 - **1.0.0** 2017.11.7
-	* first commit
+    * first commit
 
 ### 其它问题
 

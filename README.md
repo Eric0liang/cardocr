@@ -36,9 +36,9 @@
     compile 'com.github.eric0liang:lib_cardocr:1.0.4'
 ```
 ### 依赖的jar添加到libs
-[fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar) 用于解析腾讯云平台response的json
+[fastjson.jar](https://raw.githubusercontent.com/Eric0liang/cardocr/master/app/libs/fastjson-1.2.6.jar) 用于解析腾讯云平台response的json
 
-[BASE64Decoder.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/sun.misc.BASE64Decoder.jar) 用于解码腾讯云平台response base64格式的截图
+[BASE64Decoder.jar](https://raw.githubusercontent.com/Eric0liang/cardocr/master/app/libs/sun.misc.BASE64Decoder.jar) 用于解码腾讯云平台response base64格式的截图
 
 ## demo apk下载地址: 
 [点击下载](https://raw.githubusercontent.com/Eric0liang/cardocr/master/app-debug.apk)

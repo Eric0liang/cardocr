@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import cn.com.bluemoon.cardocr.lib.R;
 import cn.com.bluemoon.cardocr.lib.base.BaseCaptureActivity;
 import cn.com.bluemoon.cardocr.lib.common.CardType;
 
@@ -18,11 +17,11 @@ import cn.com.bluemoon.cardocr.lib.common.CardType;
  * Created by liangjiangli on 2017/7/12.
  */
 
-public class CaptureActivity extends BaseCaptureActivity{
+public class CaptureActivity extends BaseCaptureActivity {
 
     /**
      * @param context
-     * @param type such as CardType.TYPE_ID_CARD_FRONT
+     * @param type        such as CardType.TYPE_ID_CARD_FRONT
      * @param requestCode
      */
     public static void startAction(Activity context, CardType type, int requestCode) {
@@ -35,7 +34,7 @@ public class CaptureActivity extends BaseCaptureActivity{
 
     /**
      * @param context
-     * @param type such as CardType.TYPE_ID_CARD_FRONT
+     * @param type        such as CardType.TYPE_ID_CARD_FRONT
      * @param requestCode
      * @param titleId
      */
@@ -50,9 +49,9 @@ public class CaptureActivity extends BaseCaptureActivity{
 
     /**
      * @param context
-     * @param type such as CardType.TYPE_ID_CARD_FRONT
+     * @param type        such as CardType.TYPE_ID_CARD_FRONT
      * @param requestCode
-     * @param url 保存截图文件夹路径
+     * @param url         保存截图文件夹路径
      */
     public static void startAction(Activity context, CardType type, String url, int requestCode) {
         Intent intent = new Intent(context, CaptureActivity.class);
@@ -65,10 +64,10 @@ public class CaptureActivity extends BaseCaptureActivity{
 
     /**
      * @param context
-     * @param type such as CardType.TYPE_ID_CARD_FRONT
+     * @param type        such as CardType.TYPE_ID_CARD_FRONT
      * @param requestCode
      * @param titleId
-     * @param url 保存截图文件夹路径
+     * @param url         保存截图文件夹路径
      */
     public static void startAction(Activity context, CardType type, @StringRes int titleId, String url, int requestCode) {
         Intent intent = new Intent(context, CaptureActivity.class);
@@ -90,15 +89,28 @@ public class CaptureActivity extends BaseCaptureActivity{
     public void initCustomView() {
         final ImageView imageBack = (ImageView) findViewById(R.id.image_back);
         final View btnTakePicture = findViewById(R.id.btn_take_picture);
-        TextView txtTitle = (TextView)findViewById(R.id.txt_title);
+        TextView txtTitle = (TextView) findViewById(R.id.txt_title);
+        int titleResourceId;
         if (title == 0) {
-            int titleResourceId;
-            if (cartType == CardType.TYPE_BANK) {
-                titleResourceId = R.string.txt_bank_card_title;
-            } else if (cartType == CardType.TYPE_ID_CARD_FRONT) {
-                titleResourceId = R.string.txt_id_card_title;
-            } else {
-                titleResourceId = R.string.txt_id_card_title2;
+            switch (cartType) {
+                case TYPE_BANK:
+                    titleResourceId = R.string.txt_bank_card_title;
+                    break;
+                case TYPE_ID_CARD_FRONT:
+                    titleResourceId = R.string.txt_id_card_title;
+                    break;
+                case TYPE_ID_CARD_BACK:
+                    titleResourceId = R.string.txt_id_card_title2;
+                    break;
+                case TYPE_DRIVING_LICENSE_XINGSHI:
+                    titleResourceId = R.string.txt_driving_license_xingshi_title;
+                    break;
+                case TYPE_DRIVING_LICENSE_JIASHI:
+                    titleResourceId = R.string.txt_driving_license_jiashi_title;
+                    break;
+                default:
+                    titleResourceId = R.string.txt_id_card_title;
+                    break;
             }
             txtTitle.setText(titleResourceId);
         } else {

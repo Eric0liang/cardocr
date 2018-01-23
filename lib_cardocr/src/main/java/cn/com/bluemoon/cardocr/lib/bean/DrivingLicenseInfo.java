@@ -25,9 +25,7 @@ public class DrivingLicenseInfo implements Serializable {
     private String name;//姓名
     private String gender;//性别
     private String nationality;//国籍
-    //    private String address;//住址
     private String dateBirth;//出生日期
-    //    private String openingDate;//领证日期
     private String quasiDrivingType;//准驾车型
     private String effectiveDate;//有效日期
     private String startDate;//起始日期
@@ -182,60 +180,60 @@ public class DrivingLicenseInfo implements Serializable {
         if (!TextUtils.isEmpty(licenseNumber)) {
             buffer.append(licenseNumber);
             if (!TextUtils.isEmpty(vehicleType)) {
-                buffer.append(vehicleType);
+                buffer.append(","+vehicleType);
             }
             if (!TextUtils.isEmpty(master)) {
-                buffer.append(master);
+                buffer.append(","+master);
             }
             if (!TextUtils.isEmpty(address)) {
-                buffer.append(address);
+                buffer.append(","+address);
             }
             if (!TextUtils.isEmpty(function)) {
-                buffer.append(function);
+                buffer.append(","+function);
             }
             if (!TextUtils.isEmpty(brandModel)) {
-                buffer.append(brandModel);
+                buffer.append(","+brandModel);
             }
             if (!TextUtils.isEmpty(identifyCode)) {
-                buffer.append(identifyCode);
+                buffer.append(","+identifyCode);
             }
             if (!TextUtils.isEmpty(engineNumber)) {
-                buffer.append(engineNumber);
+                buffer.append(","+engineNumber);
             }
             if (!TextUtils.isEmpty(registrationDate)) {
-                buffer.append(registrationDate);
+                buffer.append(","+registrationDate);
             }
             if (!TextUtils.isEmpty(openingDate)) {
-                buffer.append(openingDate);
+                buffer.append(","+openingDate);
             }
         } else if (!TextUtils.isEmpty(certificateNumber)) {
             buffer.append(certificateNumber);
             if (!TextUtils.isEmpty(name)) {
-                buffer.append(name);
+                buffer.append(","+name);
             }
             if (!TextUtils.isEmpty(gender)) {
-                buffer.append(gender);
+                buffer.append(","+gender);
             }
             if (!TextUtils.isEmpty(nationality)) {
-                buffer.append(nationality);
+                buffer.append(","+nationality);
             }
             if (!TextUtils.isEmpty(address)) {
-                buffer.append(address);
+                buffer.append(","+address);
             }
             if (!TextUtils.isEmpty(dateBirth)) {
-                buffer.append(dateBirth);
+                buffer.append(","+dateBirth);
             }
             if (!TextUtils.isEmpty(openingDate)) {
-                buffer.append(openingDate);
+                buffer.append(","+openingDate);
             }
             if (!TextUtils.isEmpty(quasiDrivingType)) {
-                buffer.append(quasiDrivingType);
+                buffer.append(","+quasiDrivingType);
             }
             if (!TextUtils.isEmpty(effectiveDate)) {
-                buffer.append(effectiveDate);
+                buffer.append(","+effectiveDate);
             }
             if (!TextUtils.isEmpty(startDate)) {
-                buffer.append(startDate);
+                buffer.append(","+startDate);
             }
         }
         return buffer.toString();

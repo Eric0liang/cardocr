@@ -13,9 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import cn.com.bluemoon.cardocr.lib.CaptureActivity;
-import cn.com.bluemoon.cardocr.lib.DrivingLicenseActivity;
 import cn.com.bluemoon.cardocr.lib.bean.BankInfo;
-import cn.com.bluemoon.cardocr.lib.bean.DrivingLicenseBean;
 import cn.com.bluemoon.cardocr.lib.bean.DrivingLicenseInfo;
 import cn.com.bluemoon.cardocr.lib.bean.IdCardInfo;
 import cn.com.bluemoon.cardocr.lib.common.CardType;
@@ -62,10 +60,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 CaptureActivity.startAction(this, CardType.TYPE_BANK, 1);
                 break;
             case R.id.btn_xingshi:
-                DrivingLicenseActivity.startAction(this,CardType.TYPE_DRIVING_LICENSE_XINGSHI,2);
+                CaptureActivity.startAction(this,CardType.TYPE_DRIVING_LICENSE_XINGSHI,2);
                 break;
             case R.id.btn_jiashi:
-                DrivingLicenseActivity.startAction(this,CardType.TYPE_DRIVING_LICENSE_JIASHI,2);
+                CaptureActivity.startAction(this,CardType.TYPE_DRIVING_LICENSE_JIASHI,2);
                 break;
         }
     }

@@ -1,2 +1,0 @@
-在Android Studio的Terminal面板执行如下命令
-gradle bintrayUpload

@@ -355,9 +355,9 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
      */
     private boolean isControl = false;
     protected final void identification() {
-        try {
-            if (mCamera != null && !isControl) {
-                isControl = true;
+        if (mCamera != null && !isControl) {
+            isControl = true;
+            try {
                 mCamera.takePicture(null, null, new Camera.PictureCallback() {
                     @Override
                     public void onPictureTaken(final byte[] bytes, Camera camera) {
@@ -386,9 +386,10 @@ public abstract class BaseCaptureActivity extends BasePermissionFragmentActivity
                         }).start();
                     }
                 });
+            } catch (Exception e) {
+                isControl = false;
             }
-        } catch (Exception e) {
-            isControl = false;
+
         }
     }
 

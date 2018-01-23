@@ -31,7 +31,7 @@
 ```
 
 ```groovy
-    compile 'com.github.eric0liang:lib_cardocr:1.0.3'
+    compile 'com.github.eric0liang:lib_cardocr:1.0.4'
 ```
 ### 依赖的jar添加到libs
 [fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)
@@ -39,10 +39,13 @@
 [BASE64Decoder.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/sun.misc.BASE64Decoder.jar)
 
 ## demo apk下载地址: 
-[点击下载](https://github.com/Eric0liang/cardocr/blob/master/app-debug.apk)
+[点击下载](https://raw.githubusercontent.com/Eric0liang/cardocr/master/app-debug.apk)
 
 ## 效果
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/6.png" width="400px"/>    <img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="400px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="400px"/>    <img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="400px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="400px"/>
+### 1.身份证识别
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/7.png" width="300px"/>
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/5.png" width="300px"/>
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="300px"/>
 
 ## 使用指南（2017.12.8更新）
 
@@ -53,10 +56,6 @@
 #### API
 startAction(Activity context, CardType type, int requestCode) </br>
 startAction(Activity context, CardType type, String url, int requestCode) </br>
-startAction(Activity context, CardType type, @StringRes int titleId, int requestCode)</br>
-
-### DrivingLicenseActivity 识别行驶证、驾驶证照相机类
-startAction(Activity context, CardType type, int requestCode) </br>
 startAction(Activity context, CardType type, @StringRes int titleId, int requestCode)</br>
 
 * context 调起照相机的activity类
@@ -133,6 +132,7 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
     private String cardNumber; //卡号，6228475757548
 
 ### 自定义照相机界面
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/6.png" width="400px"/>
 
 可以参考CoustomCaptureActivity类，继承BaseCaptureActivity，并重写getLayoutId，initCustomView两个方法即可。
 ```groovy
@@ -162,6 +162,9 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 ```
 
 ## 更新记录
+- **1.0.4** 2018.1.23
+    * 优化行驶证、驾驶证识别
+    * 添加使用说明
 - **1.0.3, 1.0.2** 2017.12.8
     * 优化代码
 - **1.0.1** 2017.12.8

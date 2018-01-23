@@ -1,6 +1,6 @@
 # cardocr 身份证、银行卡、行驶证、驾驶证识别
 
-这个库的底层是使用[腾讯优图云平台](http://open.youtu.qq.com/)识别技术，所以引用包非常小，识别速度大概5秒左右。
+这个库的底层是使用[腾讯优图云平台](http://open.youtu.qq.com/)识别技术，所以引用包非常小，识别速度大概几秒。
 
 ## 集成
 ### permission与meta-data声明
@@ -43,10 +43,13 @@
 
 ## 效果
 ### 1.身份证识别
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/7.png" width="300px"/>
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/5.png" width="300px"/>
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="300px"/>
-
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/7.png" width="280px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/5.png" width="280px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="280px"/>
+### 2.银行卡识别
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/9.png" width="300px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="300px"/>
+### 3.行驶证识别
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/8.png" width="300px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="300px"/>
+### 4.驾驶证识别
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/10.png" width="300px"/><img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="300px"/>
 ## 使用指南（2017.12.8更新）
 
 **使用前请阅读对应模块的文档和示例，如果有不清楚的地方，可以看源码，或者向我提问。**

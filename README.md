@@ -1,6 +1,8 @@
 # cardocr 身份证、银行卡、行驶证、驾驶证识别
 
-这个库的底层是使用[腾讯优图云平台](http://open.youtu.qq.com/)识别技术，所以引用包非常小，识别速度大概5秒左右。
+**使用前请阅读对应模块的文档和示例，如果有不清楚的地方，可以看源码，或者向我提问。**
+
+这个库的底层是使用[腾讯优图云平台](http://open.youtu.qq.com/)识别技术，所以引用包非常小，识别速度大概几秒。
 
 ## 集成
 ### permission与meta-data声明
@@ -34,22 +36,27 @@
     compile 'com.github.eric0liang:lib_cardocr:1.0.4'
 ```
 ### 依赖的jar添加到libs
-[fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar)
+[fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar) 用于解析腾讯云平台response的json
 
-[BASE64Decoder.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/sun.misc.BASE64Decoder.jar)
+[BASE64Decoder.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/sun.misc.BASE64Decoder.jar) 用于解码腾讯云平台response base64格式的截图
 
 ## demo apk下载地址: 
 [点击下载](https://raw.githubusercontent.com/Eric0liang/cardocr/master/app-debug.apk)
 
 ## 效果
 ### 1.身份证识别
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/7.png" width="300px"/>
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/5.png" width="300px"/>
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="300px"/>
-
-## 使用指南（2017.12.8更新）
-
-**使用前请阅读对应模块的文档和示例，如果有不清楚的地方，可以看源码，或者向我提问。**
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/7.jpg"/></br>
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/5.png" width="280px"/>  <img src="https://github.com/Eric0liang/cardocr/blob/master/images/4.png" width="280px"/></br>
+### 2.银行卡识别
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/9.jpg"/></br>
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="300px"/></br>
+### 3.行驶证识别
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/8.jpg"/></br>
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="300px"/>v
+### 4.驾驶证识别
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/10.jpg"/></br>
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="300px"/>v
+## 使用指南（2018.1.23更新）
 
 ### CaptureActivity 识别身份证、银行卡照相机类
 
@@ -89,6 +96,12 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
             case R.id.btn_bank:
                 CaptureActivity.startAction(this, CardType.TYPE_BANK, 1);
                 break;
+            case R.id.btn_xingshi:
+                CaptureActivity.startAction(this,CardType.TYPE_DRIVING_LICENSE_XINGSHI,2);
+                break;
+            case R.id.btn_jiashi:
+                CaptureActivity.startAction(this,CardType.TYPE_DRIVING_LICENSE_JIASHI,2);
+                break;
         }
     }
     
@@ -105,8 +118,11 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
                     imgIdCard.setImageBitmap(BitmapFactory.decodeFile(info.getImageUrl()));
                 }
 
-            } else {
+            } else if (requestCode == 1){
                 BankInfo info = (BankInfo)data.getSerializableExtra(CaptureActivity.BUNDLE_DATA);
+                txtInfo.setText(info.toString());
+            } else {
+                DrivingLicenseInfo info = (DrivingLicenseInfo)data.getSerializableExtra(CaptureActivity.BUNDLE_DATA);
                 txtInfo.setText(info.toString());
             }
         }
@@ -130,11 +146,32 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
     private String cardName; //卡名字，金穗通宝卡(银联卡)
     private String cardType; //卡类型，借记卡
     private String cardNumber; //卡号，6228475757548
+    
+#### DrivingLicenseInfo
+    private String licenseNumber;//车牌号码
+    private String vehicleType;//车辆类型
+    private String master;//所有人
+    private String address;//住址
+    private String function;//使用性质
+    private String brandModel;//品牌型号
+    private String identifyCode;//识别代码
+    private String engineNumber;//发动机号
+    private String registrationDate;//注册日期
+    private String openingDate;//发证日期
 
-### 自定义照相机界面
+    private String certificateNumber;//证号
+    private String name;//姓名
+    private String gender;//性别
+    private String nationality;//国籍
+    private String dateBirth;//出生日期
+    private String quasiDrivingType;//准驾车型
+    private String effectiveDate;//有效日期
+    private String startDate;//起始日期
+
+### 识别照相机界面，默认样式如下，也可自定义（参考CoustomCaptureActivity类）
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/6.png" width="400px"/>
 
-可以参考CoustomCaptureActivity类，继承BaseCaptureActivity，并重写getLayoutId，initCustomView两个方法即可。
+如果想自定义识别照相机界面，继承BaseCaptureActivity，并重写getLayoutId，initCustomView两个方法即可。
 ```groovy
     @Override
     public int getLayoutId() {

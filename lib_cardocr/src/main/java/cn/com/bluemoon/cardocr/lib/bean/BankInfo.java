@@ -55,8 +55,8 @@ public class BankInfo implements Serializable {
         if (!TextUtils.isEmpty(cardNumber)) {
             stringBuffer.append("，"+cardNumber);
         }
-        if (!TextUtils.isEmpty(cardNumber)) {
-            stringBuffer.append("，"+cardNumber);
+        if (!TextUtils.isEmpty(cardType)) {
+            stringBuffer.append("，"+cardType);
         }
         if (!TextUtils.isEmpty(cardName)) {
             stringBuffer.append("，"+cardName);

@@ -52,10 +52,10 @@
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="300px"/></br>
 ### 3.行驶证识别
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/8.jpg"/></br>
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="300px"/>v
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="300px"/>
 ### 4.驾驶证识别
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/10.jpg"/></br>
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="300px"/>v
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="300px"/>
 ## 使用指南（2018.1.23更新）
 
 ### CaptureActivity 识别身份证、银行卡照相机类

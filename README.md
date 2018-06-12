@@ -40,6 +40,10 @@
 
 [BASE64Decoder.jar](https://raw.githubusercontent.com/Eric0liang/cardocr/master/app/libs/sun.misc.BASE64Decoder.jar) 用于解码腾讯云平台response base64格式的截图
 
+### 混淆
+-dontwarn cn.com.bluemoon.cardocr.**
+-keep class cn.com.bluemoon.cardocr.** {*;}
+
 ## demo apk下载地址: 
 [点击下载](https://raw.githubusercontent.com/Eric0liang/cardocr/master/app-debug.apk)
 

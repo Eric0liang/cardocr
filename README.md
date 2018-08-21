@@ -33,7 +33,7 @@
 ```
 
 ```groovy
-    compile 'com.github.eric0liang:lib_cardocr:1.0.4'
+    compile 'com.github.eric0liang:lib_cardocr:1.0.5'
 ```
 ### 依赖的jar添加到libs
 [fastjson.jar](https://raw.githubusercontent.com/Eric0liang/cardocr/master/app/libs/fastjson-1.2.6.jar) 用于解析腾讯云平台response的json
@@ -205,6 +205,8 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 ```
 
 ## 更新记录
+- **1.0.5** 2018.8.21
+    * 修复8.0奔溃问题
 - **1.0.4** 2018.1.23
     * 优化行驶证、驾驶证识别
     * 添加使用说明

@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/Eric0liang/cardocr'
     gitUrl = 'https://github.com/Eric0liang/cardocr.git'
 
-    libraryVersion = '1.0.4'
+    libraryVersion = '1.0.5'
 
     developerId = 'ericliang'
     developerName = 'Eric Liang'

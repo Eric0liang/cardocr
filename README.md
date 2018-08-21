@@ -1,6 +1,6 @@
 # cardocr 身份证、银行卡、行驶证、驾驶证识别
 
-**使用前请阅读对应模块的文档和示例，如果有不清楚的地方，可以看源码，或者向我提问。**
+**使用前请阅读对应模块的文档和示例，如果有不清楚的地方，可以看源码，或者向我提问。觉得有帮助的，星星点起来！！！**
 
 这个库的底层是使用[腾讯优图云平台](http://open.youtu.qq.com/)识别技术，所以引用包非常小，识别速度大概几秒。
 
@@ -36,9 +36,15 @@
     compile 'com.github.eric0liang:lib_cardocr:1.0.4'
 ```
 ### 依赖的jar添加到libs
-[fastjson.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/fastjson-1.2.6.jar) 用于解析腾讯云平台response的json
+[fastjson.jar](https://raw.githubusercontent.com/Eric0liang/cardocr/master/app/libs/fastjson-1.2.6.jar) 用于解析腾讯云平台response的json
 
-[BASE64Decoder.jar](https://github.com/Eric0liang/cardocr/blob/master/app/libs/sun.misc.BASE64Decoder.jar) 用于解码腾讯云平台response base64格式的截图
+[BASE64Decoder.jar](https://raw.githubusercontent.com/Eric0liang/cardocr/master/app/libs/sun.misc.BASE64Decoder.jar) 用于解码腾讯云平台response base64格式的截图
+
+### 混淆
+```groovy
+-dontwarn cn.com.bluemoon.cardocr.**
+-keep class cn.com.bluemoon.cardocr.** {*;}
+```
 
 ## demo apk下载地址: 
 [点击下载](https://raw.githubusercontent.com/Eric0liang/cardocr/master/app-debug.apk)
@@ -52,10 +58,10 @@
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/3.png" width="300px"/></br>
 ### 3.行驶证识别
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/8.jpg"/></br>
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="300px"/>v
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/2.png" width="300px"/>
 ### 4.驾驶证识别
 <img src="https://github.com/Eric0liang/cardocr/blob/master/images/10.jpg"/></br>
-<img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="300px"/>v
+<img src="https://github.com/Eric0liang/cardocr/blob/master/images/1.png" width="300px"/>
 ## 使用指南（2018.1.23更新）
 
 ### CaptureActivity 识别身份证、银行卡照相机类

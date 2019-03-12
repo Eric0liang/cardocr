@@ -85,7 +85,10 @@ startAction(Activity context, CardType type, @StringRes int titleId, int request
 
 #### 使用demo MainActivity代码片段
 
-重要：应该拍照界面是横屏，部分手机横竖屏切换会导致界面重绘，重绘可能引起崩溃，要在MainActivity（你的调用类）类声明中添加android:configChanges="orientation|keyboardHidden|screenSize"
+重要：因为拍照界面是横屏，部分手机横竖屏切换会导致界面重绘，重绘可能引起崩溃，要在MainActivity（你的调用类）声明中添加
+```groovy
+   android:configChanges="orientation|keyboardHidden|screenSize"
+```
 
 ```groovy
     @Override
